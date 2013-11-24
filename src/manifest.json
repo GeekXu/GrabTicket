@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+
+  "name": "Sina Commenter",
+  "description": "深秋抢票.",
+  "version": "1.0",
+  "permissions": [
+	    "activeTab",
+      "http://weibo.com/*",
+      "http://login.sina.com.cn/*"
+	  ],
+  "background": {
+      "scripts": ["background.js"],
+      "persistent": true
+  },
+  "content_security_policy":"script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup":"popup.html"
+  }
+}
