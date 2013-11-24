@@ -11,7 +11,7 @@ function GrabTicket(){
 		return;
 	}
 
-	if(Hour>timeHour||(Hour==timeHour&&Minute>(lastTime+parseInt(timeMinute))))
+	if(Hour>timeHour||(Hour==timeHour&&Minute>(lastTime+parseInt(timeMinute)-1)))
 	{
 		alert("时间已过");
 		clearInterval(timer);
