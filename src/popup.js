@@ -42,6 +42,9 @@ function stop(){
 document.addEventListener('DOMContentLoaded',function(){
 	document.getElementById('start').addEventListener('click',start);
 	document.getElementById('stop').addEventListener('click',stop);
+	document.getElementById('help').addEventListener('click',function(){
+		chrome.tabs.create({url: "https://github.com/GeekXu/GrabTicket#grabticket"});
+	})
 });
 
 
