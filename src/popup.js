@@ -1,37 +1,38 @@
+var username="北京理工大学学生会";
+var feature="★深秋抢票★";//★
+var freq=500;
+var content="1120101828+8179";
+
 
 function getValues(){
-	uid=document.getElementById("uid").value;
-	mid=document.getElementById("mid").value;
+	username=document.getElementById("username").value;
+	feature=document.getElementById("feature").value;
 	freq=document.getElementById("freq").value;
 	content=document.getElementById("content").value;
-	lastTime=document.getElementById("lastTime").value;
-	timeHour=document.getElementById("timeHour").value;
-	timeMinute=document.getElementById("timeMinute").value;
+	cnt=document.getElementById("cnt").value;
 }
 
 function setValues(){
-	document.getElementById("uid").value=uid;
-	document.getElementById("mid").value=mid;
+	document.getElementById("username").value=username;
+	document.getElementById("feature").value=feature;
 	document.getElementById("freq").value=freq;
 	document.getElementById("content").value=content;
-	document.getElementById("lastTime").value=lastTime;
-	document.getElementById("timeHour").value=timeHour;
-	document.getElementById("timeMinute").value=timeMinute;
+	document.getElementById("cnt").value=cnt;
 }
 
 function start(){
-	//timer = setInterval("GrabTicket()",1000*freq);
-	//Moved to start.js which will be injected into the active Tab
 
+	
 	getValues();
-	
-	
-	var codestr="var uid='"+uid+"';var mid='"+mid+"';var content='"+content+"';var timeHour="+timeHour+";var timeMinute="+timeMinute+";var lastTime="+lastTime+";var freq="+freq+";var timer";
-	//var codestr="var freq=1;var content=2;";
+
+	var codestr="var username='"+username+"';var content='"+content+"';var freq="+freq+";var feature='"+feature+"';var cnt="+cnt+";";
+	//var codestr="var uid='"+uid+"';var mid='"+mid+"';var content='"+content+"';var timeHour="+timeHour+";var timeMinute="+timeMinute+";var lastTime="+lastTime+";var freq="+freq+";var timer";
 	//alert(codestr);
 
 	chrome.tabs.executeScript(null, {code: codestr});
+	chrome.tabs.executeScript(null, {file: "convertor.js"});
 	chrome.tabs.executeScript(null, {file: "start.js"});
+
 }
 
 function stop(){
@@ -39,12 +40,44 @@ function stop(){
 	chrome.tabs.executeScript(null, {file: "stop.js"});
 }
 
+function save(){
+	getValues();
+
+	var info=new Object;
+	info.username=username;
+	info.feature=feature;
+	info.freq=freq;
+	info.wcontent=content;
+	info.cnt=cnt;
+
+	chrome.storage.local.set({'info': info},function(){
+		alert('信息成功保存');
+		//console.log('infomation saved');
+	});
+}
+
 document.addEventListener('DOMContentLoaded',function(){
+
 	document.getElementById('start').addEventListener('click',start);
 	document.getElementById('stop').addEventListener('click',stop);
+	document.getElementById('save').addEventListener('click',save);
 	document.getElementById('help').addEventListener('click',function(){
 		chrome.tabs.create({url: "https://github.com/GeekXu/GrabTicket#grabticket"});
-	})
+	});
+
+	chrome.storage.local.get(function(value){
+		if(value&&value.info){
+			var info=value.info;
+			feature=info.feature;
+			content=info.wcontent;
+			freq=info.freq;
+			username=info.username;
+			cnt=info.cnt;
+
+			setValues();
+		}
+
+	});
 });
 
 

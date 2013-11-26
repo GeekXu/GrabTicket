@@ -1,13 +1,16 @@
 {
   "manifest_version": 2,
 
-  "name": "Sina Commenter",
+  "name": "深秋抢票",
   "description": "深秋抢票.",
-  "version": "1.0",
+  "version": "2.0",
   "permissions": [
+      "tabs",
+      "storage",
 	    "activeTab",
       "http://weibo.com/*",
-      "http://login.sina.com.cn/*"
+      "http://login.sina.com.cn/*",
+      "http://*.weibo.com/*"
 	  ],
   "background": {
       "scripts": ["background.js"],

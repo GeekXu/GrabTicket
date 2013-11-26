@@ -2,25 +2,38 @@
 <html>
   <head>
     <title>test</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.checkbox.css">
     <style>
       body {
-        min-width: 240px;
-        font:normal 12px/22px "微软雅黑";
-        overflow-x: hidden;
+        min-width: 270px;
       }
     </style>
     <script src="popup.js" language='javascript'></script>
   </head>
   <body>
-  开始小时：<input type="text" id="timeHour" maxlength=2 style="width:140px;height:20px" value="13"/>(h)</br>
-	开始分钟：<input type="text" id="timeMinute" maxlength=2 style="width:140px;height:20px" value="0"/>(m)</br>
-	持续时间：<input type="text" id="lastTime" maxlength=2 style="width:140px;height:20px" value="1"/>(m)</br>
-	评论间隔：<input type="text" id="freq" style="width:140px;height:20px" value="1"/>(s)</br>
-	评论内容：<input type="text" id="content" style="width:140px;height:20px" value="1120101828+8179"/> </br>
-	用户 uid： <input type="text" id="uid" style="width:140px;height:20px" value="1779288911"/> <a href="" id="help">?</a></br>
-	微博 mid：<input type="text" id="mid" style="width:140px;height:20px" value="3647946190896988"/></br>
-	<button id="start">开始刷票</button>
-  <button id="stop">停止刷票</button>
+
+    <legend>深秋微博抢票</legend>
+    <div>
+      用户名&nbsp;&nbsp;&nbsp;：<input type="text" id="username" style="width:140px;height:20px" value="北理青年"/> </br>
+      微博特征：<input type="text" id="feature" style="width:140px;height:20px" value="★深秋抢票★;抢票开始啦"/><a href="" id="help">帮助</a>  </br>
+    	刷新间隔：<input type="text" id="freq" style="width:140px;height:20px" value="500"/>毫秒 </br>
+    	评论内容：<input type="text" id="content" style="width:140px;height:20px" value="1120101828+8179"/> </br>
+      评论次数：<input type="text" id="cnt" style="width:140px;height:20px" value="5"/> </br></br>
+    </div>
+    <!--
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" id="saveinfo" checked> 保存信息
+      </label>
+    </div>
+  -->
+
+  <div class="btn-group" style="margin-left: center;margin-right: auto;">
+	   <button id="start" class="btn btn-primary" >开始刷票</button>
+     <button id="stop" class="btn">停止刷票</button>
+     <button id="save" class="btn">保存信息</button>
+  </div>
   </body>
 </html>
 
