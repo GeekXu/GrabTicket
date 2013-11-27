@@ -11,6 +11,7 @@ var firstWeibo;
 var features;
 
 var IfdirectFound=true;
+var timer;
 
 
 function GrabTicket(){
