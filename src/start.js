@@ -50,6 +50,7 @@ function GrabTicket(){
 	if (flag==true) //开始抢票
 	{
 		//alert("符合条件的微博已发布，开始评论。");
+		var cnt=1; //只回复一条
 		for (var i = 0; i < cnt; i++) {
 			var date=new Date();
 			var __rnd=date.getTime();
@@ -68,6 +69,8 @@ function GrabTicket(){
 			};
 
 			//发一条垃圾评论再删掉，破解评论10分钟限制
+			//只发一条微博，就不用发垃圾评论了
+			/*
 			var contentRubbish="顶";
 			date=new Date();
 			__rnd=date.getTime();
@@ -75,7 +78,7 @@ function GrabTicket(){
 			data="act=post&mid="+mid+"&uid="+uid+"&forward=0&isroot=0&content="+contentRubbish+"&repeatNode=%5Bobject%20HTMLDivElement%5D&location=home&module=scommlist&group_source=group_all&_t=0";
 			xmlHttp = new XMLHttpRequest();
 			xmlHttp.open("post",url,false);
-			xmlHttp.setRequestHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+			xmlHttp.setRequestHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9;q=0.8");
 			xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
 
 			xmlHttp.send(data);
@@ -95,11 +98,13 @@ function GrabTicket(){
 				data="act=delete&mid="+mid+"&cid="+commentID+"&uid="+uid+"&is_block=0&_t=0";
 				xmlHttp = new XMLHttpRequest();
 				xmlHttp.open("post",url,false);
-				xmlHttp.setRequestHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+				xmlHttp.setRequestHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,;q=0.8");
 				xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
 
 				xmlHttp.send(data);
 			};
+			*/
+
 
 		};
 		

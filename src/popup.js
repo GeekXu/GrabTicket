@@ -9,7 +9,7 @@ function getValues(){
 	feature=document.getElementById("feature").value;
 	freq=document.getElementById("freq").value;
 	content=document.getElementById("content").value;
-	cnt=document.getElementById("cnt").value;
+	//cnt=document.getElementById("cnt").value;
 }
 
 function setValues(){
@@ -17,7 +17,7 @@ function setValues(){
 	document.getElementById("feature").value=feature;
 	document.getElementById("freq").value=freq;
 	document.getElementById("content").value=content;
-	document.getElementById("cnt").value=cnt;
+	//document.getElementById("cnt").value=cnt;
 }
 
 function start(){
@@ -25,7 +25,9 @@ function start(){
 	
 	getValues();
 
-	var codestr="var username='"+username+"';var content='"+content+"';var freq="+freq+";var feature='"+feature+"';var cnt="+cnt+";";
+	content=content.replace('+',"%2b");
+
+	var codestr="var username='"+username+"';var content='"+content+"';var freq="+freq+";var feature='"+feature+"';";
 	//var codestr="var uid='"+uid+"';var mid='"+mid+"';var content='"+content+"';var timeHour="+timeHour+";var timeMinute="+timeMinute+";var lastTime="+lastTime+";var freq="+freq+";var timer";
 	//alert(codestr);
 
@@ -48,7 +50,7 @@ function save(){
 	info.feature=feature;
 	info.freq=freq;
 	info.wcontent=content;
-	info.cnt=cnt;
+	//info.cnt=cnt;
 
 	chrome.storage.local.set({'info': info},function(){
 		alert('信息成功保存');
@@ -72,7 +74,7 @@ document.addEventListener('DOMContentLoaded',function(){
 			content=info.wcontent;
 			freq=info.freq;
 			username=info.username;
-			cnt=info.cnt;
+			//cnt=info.cnt;
 
 			setValues();
 		}
